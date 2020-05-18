@@ -34,7 +34,7 @@
                             <p class="d-flex justify-content-between">Tanggal Mendaftar <span>{{$date}}</span></p>
                         </div>
 
-                        @if($user->followers->count() && Auth::id() != $user)
+                        @if($user->followers->count() && Auth::id() != $user->id)
                             @foreach($user->followers as $follower)
                                 @if(Auth::id() == $follower->followed_id)
                                     <button class="btn btn-secondary" disabled>Followed</button>
@@ -80,7 +80,7 @@
                         @foreach($user->videos as $vid)
                             <div class="col-lg-4 mb-3">
                                 <div class="card">
-                                    <img src="{{asset('storage/'.$vid->thumbnaik)}}" class="img-fluid">
+                                    <img src="{{asset('storage/'.$vid->thumbnail)}}" class="img-fluid">
                                     <div class="card-body">
                                         <span class="d-flex justify-content-between">
                                             <b class="text-success">{{$vid->user->name}}</b>

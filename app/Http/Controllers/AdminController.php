@@ -15,6 +15,9 @@ class AdminController extends Controller
 
     function profile($id){
         $user = User::find($id);
+        if($user != Auth::user()){
+            return redirect()->back();
+        }
         $data = [
             "user"=>$user
         ];
